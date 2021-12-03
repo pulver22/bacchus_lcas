@@ -1,80 +1,13 @@
 <?xml version="1.0" ?>
 <launch>
 
-  <!--MAIN PARAMETERS -->
-  <arg name="world_name" default="summer_school_mix"/>
-  <arg name="gazebo_gui" default="false"/>
-
   <!-- RTAB-MAP SLAM PARAMETERS -->
-  <arg name="Odom/Strategy" default="0" /> <!--0=Frame-to-Map (F2M) 1=Frame-to-Frame (F2F) 2=Fovis 3=viso2 4=DVO-SLAM 5=ORB_SLAM2 6=OKVIS 7=LOAM 8=MSCKF_VIO 9=VINS-Fusion -->
-  <arg name="Kp/DetectorStrategy" default="8"/>    <!-- 2=ORB  7=BRISK 8=GFTT/ORB 9=KAZE 10=ORB-OCTREE 11=SuperPoint 15=PyDetector" -->
-  <arg name="Optimizer/Strategy"  default="1" />  <!-- "Graph optimization strategy: 0=TORO, 1=g2o, 3=Ceres.")-->
-
-  <arg name="localization"        default="false"/> <!-- Localization-only mode -->
+  <arg name="Odom/Strategy"           default="0" /> <!--0=Frame-to-Map (F2M) 1=Frame-to-Frame (F2F) 2=Fovis 3=viso2 4=DVO-SLAM 5=ORB_SLAM2 6=OKVIS 7=LOAM 8=MSCKF_VIO 9=VINS-Fusion -->
+  <arg name="Kp/DetectorStrategy"     default="8"/>    <!-- 2=ORB  7=BRISK 8=GFTT/ORB 9=KAZE 10=ORB-OCTREE 11=SuperPoint 15=PyDetector" -->
+  <arg name="Optimizer/Strategy"      default="1" />  <!-- "Graph optimization strategy: 0=TORO, 1=g2o, 3=Ceres.")-->
+  <arg name="remap_gazebo_odom_tf"       default="true"/>
+  <arg name="localization"            default="false"/> <!-- Localization-only mode -->
   
-
-  <!-- ======================= -->
-  <!-- DO NOT TOUCH UNDER THIS -->
-  <!-- ======================= -->
-
-  <!-- Robot arguments -->
-  <arg name="fake_localisation" default="false" doc="fake the localisation, sets map_server and world_tf to true."/>
-  <arg name="robot_name" default="thorvald_001"/>
-
-  <arg name="robot_model" default="$(find bacchus_gazebo)/config/robot.yaml"/>
-  <arg name="model_extras" default="$(find bacchus_gazebo)/urdf/PhenoRob_sensors.xacro"/>
-
-  <!-- navigation arguments -->
-  <arg name="launch_move_base" default="false"/>
-  <arg name="tf_prefix" default="$(arg robot_name)/"/>
-  <arg name="use_carrot_planner" default="false"/>
-  <arg name="use_omni" default="false"/>
-  <arg name="X_INIT" default="0.0"/>
-  <arg name="Y_INIT" default="0.0"/>
-  <arg name="Z_INIT" default="0"/>
-  <arg name="nav_map_yaml" default="$(find bacchus_gazebo)/maps/cropped.yaml" />
-  <arg name="world_2_map_pose" default="0.0 0.0 0.0 0.0 0.0 0.0 1.0" />
-  <arg name="enable_odom_tf" default="false"/>
-
-  <!-- ############################## GAZEBO ############################## -->
-  <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
-  <arg name="world" default="$(find bacchus_gazebo)/worlds/$(arg world_name).world"/>
-  <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
-  <arg name="paused" default="false"/>
-  <arg name="use_sim_time" default="true"/>
-  <arg name="debug" default="false"/>
-  <arg name="verbose" default="false"/>
-  <arg name="remap_gazebo_odom_tf" default="true"/>
-
-  <!-- ############################### RVIZ ############################### -->
-  <arg name="launch_rviz" default="false"/>
-  <arg name="rviz_config_file" default="$(find bacchus_gazebo)/rviz/rtab_demo.rviz"/>
-
-
-  <!-- ############################### ROBOT ############################## -->
-  <group if="$(eval robot_name == 'thorvald_001')">
-
-    <include file="$(find bacchus_gazebo)/launch/thorvald.launch">
-      <arg name="robot_name"        value="$(arg robot_name)" />
-      <arg name="tf_prefix"         value="" />
-      <arg name="x"                 value="$(arg X_INIT)" />
-      <arg name="y"                 value="$(arg Y_INIT)" />
-      <arg name="z"                 value="$(arg Z_INIT)" />
-      <arg name="robot_model"       value="$(arg robot_model)"/>
-      <arg name="model_extras"      value="$(arg model_extras)"/>
-      <arg name="world_name"        value="$(arg world)"/>
-      <arg name="fake_localisation" value="$(arg fake_localisation)"/>
-      <arg name="nav_map_yaml"      value="$(arg nav_map_yaml)"/>
-      <arg name="launch_rviz"        value="$(arg launch_rviz)"/>
-      <arg name="rviz_config_file"  value="$(arg rviz_config_file)"/>
-      <arg name="gui"               value="$(arg gazebo_gui)"/>
-      <arg name="enable_odom_tf"    value="$(arg enable_odom_tf)"/>
-      <arg name="remap_gazebo_odom_tf"   value="$(arg remap_gazebo_odom_tf)"/>
-    </include>
-
-  </group>
-
-
   <!-- ################## RTAB-MAP SLAM ############################## -->
   <!-- Choose visualization -->
   <arg name="rviz"                    default="false" />
