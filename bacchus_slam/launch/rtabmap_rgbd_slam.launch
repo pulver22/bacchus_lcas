@@ -44,6 +44,10 @@
   <arg name="Reg/Force3DoF"           default="true"/> <!-- Force 3 degrees-of-freedom transform (3Dof: x,y and yaw). Parameters z, roll and pitch will be set to 0.-->
 
   <arg name="rgbd_sync"               default="true"/> <!-- Synchronize topics at different rates -->
+  <arg name="two_cameras"             default="false"/>
+  <arg name="rgb2_topic"               default="/thorvald_001/kinect2_front_camera/rgb/image_raw" />
+  <arg name="depth2_registered_topic"  default="/thorvald_001/kinect2_front_sensor/ir/depth/image_raw" />
+  <arg name="camera2_info_topic"       default="/thorvald_001/kinect2_front_camera/rgb/camera_info" />
 
 
   <group unless="$(arg localization)">
@@ -91,6 +95,10 @@
         <arg name="odom_args"                   value="-d"/>
 
         <arg name="rgbd_sync"               value="$(arg rgbd_sync)"/>
+        <arg name="two_cameras"             value="$(arg two_cameras)"/>
+        <arg name="rgb2_topic"               value="$(arg rgb_topic)" />
+        <arg name="depth2_topic"             value="$(arg depth_registered_topic)" />
+        <arg name="camera2_info_topic"       value="$(arg camera_info_topic)" />
 
     </include>
   </group>
@@ -139,6 +147,10 @@
         <arg name="odom_args"                   value=""/>
 
         <arg name="rgbd_sync"               value="$(arg rgbd_synch)"/>
+        <arg name="two_cameras"             value="$(arg two_cameras)"/>
+        <arg name="rgb2_topic"               value="$(arg rgb_topic)" />
+        <arg name="depth2_topic"             value="$(arg depth_registered_topic)" />
+        <arg name="camera2_info_topic"       value="$(arg camera_info_topic)" />
 
     </include>      
   </group>
