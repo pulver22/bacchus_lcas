@@ -96,9 +96,9 @@
 
         <arg name="rgbd_sync"               value="$(arg rgbd_sync)"/>
         <arg name="two_cameras"             value="$(arg two_cameras)"/>
-        <arg name="rgb2_topic"               value="$(arg rgb_topic)" />
-        <arg name="depth2_topic"             value="$(arg depth_registered_topic)" />
-        <arg name="camera2_info_topic"       value="$(arg camera_info_topic)" />
+        <arg name="rgb2_topic"               value="$(arg rgb2_topic)" />
+        <arg name="depth2_topic"             value="$(arg depth2_registered_topic)" />
+        <arg name="camera2_info_topic"       value="$(arg camera2_info_topic)" />
 
     </include>
   </group>

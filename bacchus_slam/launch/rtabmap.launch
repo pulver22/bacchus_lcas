@@ -88,7 +88,8 @@
   <arg name="rgbd_sync"               default="false"/>         <!-- pre-sync rgb_topic, depth_topic, camera_info_topic -->
   <arg name="approx_rgbd_sync"        default="true"/>          <!-- false=exact synchronization -->
   <arg name="subscribe_rgbd"          default="$(arg rgbd_sync)"/>
-  <arg name="rgbd_topic"              default="rgbd_image" />
+  <arg name="rgbd_topic"              default="rgbd_image0" />
+  <arg name="rgbd2_topic"             default="rgbd_image1" />
   <arg name="depth_scale"             default="1.0" />         <!-- Deprecated, use rgbd_depth_scale instead -->
   <arg name="rgbd_depth_scale"        default="$(arg depth_scale)" />
   <arg name="rgbd_decimation"         default="1" />
@@ -176,7 +177,7 @@
   <arg if="$(arg rgbd_sync)"      name="rgbd_topic_relay"          default="$(arg rgbd_topic)"/>
   <arg unless="$(arg rgbd_sync)"  name="rgbd_topic_relay"          default="$(arg rgbd_topic)_relay"/>
 
-  <group if="$(arg two_cameras)">
+  <!-- <group if="$(arg two_cameras)"> -->
     <arg if="$(arg compressed)"     name="rgb2_topic_relay"           default="$(arg rgb2_topic)_relay"/>
     <arg unless="$(arg compressed)" name="rgb2_topic_relay"           default="$(arg rgb2_topic)"/>
     <arg if="$(arg compressed)"     name="depth2_topic_relay"         default="$(arg depth2_topic)_relay"/>
@@ -187,7 +188,7 @@
     <arg unless="$(arg compressed)" name="right2_image_topic_relay"   default="$(arg right2_image_topic)"/>
     <arg if="$(arg rgbd_sync)"      name="rgbd2_topic_relay"          default="$(arg rgbd2_topic)"/>
     <arg unless="$(arg rgbd_sync)"  name="rgbd2_topic_relay"          default="$(arg rgbd2_topic)_relay"/>
-  </group>
+  <!-- </group> -->
 
   <!-- Nodes -->
   <group ns="$(arg namespace)">
@@ -365,6 +366,8 @@
       <param unless="$(arg stereo)" name="subscribe_depth"  type="bool" value="$(arg depth)"/>
       <param name="subscribe_rgb"        type="bool"   value="$(arg subscribe_rgb)"/>
       <param name="subscribe_rgbd"       type="bool"   value="$(eval subscribe_rgbd or use_odom_features)"/>
+      <param name="rgbd_cameras"         type="int"    value="2" if="$(arg two_cameras)"/>
+      <param name="rgbd_cameras"         type="int"    value="1" unless="$(arg two_cameras)"/>
       <param name="subscribe_stereo"     type="bool"   value="$(arg stereo)"/>
       <param name="subscribe_scan"       type="bool"   value="$(arg subscribe_scan)"/>
       <param name="subscribe_scan_cloud" type="bool"   value="$(arg subscribe_scan_cloud)"/>
