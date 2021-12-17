@@ -82,11 +82,11 @@
           <cameraName>${kinect2_name}_sensor</cameraName>
           <alwaysOn>true</alwaysOn>
           <updateRate>30.0</updateRate>
-          <imageTopicName>ir/image_ir_rect</imageTopicName>
-          <depthImageTopicName>ir/depth/image_raw</depthImageTopicName>
-          <pointCloudTopicName>ir/points</pointCloudTopicName>
-          <cameraInfoTopicName>ir/camera_info</cameraInfoTopicName>
-          <!--<depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>-->
+          <imageTopicName>sd/image_ir_rect</imageTopicName>
+          <depthImageTopicName>sd/image_depth_rect</depthImageTopicName>
+          <pointCloudTopicName>sd/points</pointCloudTopicName>
+          <cameraInfoTopicName>sd/camera_info</cameraInfoTopicName>
+          <depthImageCameraInfoTopicName>sd/camera_info</depthImageCameraInfoTopicName>
           <frameName>/${kinect2_name}_depth_optical_frame</frameName>
           <pointCloudCutoff>0.5</pointCloudCutoff>
           <pointCloudCutoffMax>8.0</pointCloudCutoffMax>
