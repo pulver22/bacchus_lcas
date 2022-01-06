@@ -3,7 +3,7 @@
 
   <!-- Robot arguments -->
   <arg name="fake_localisation" default="true" doc="fake the localisation, sets map_server and world_tf to true."/>
-  <arg name="riseholme_dt" default="false"/>
+  <arg name="riseholme_dt" default="true"/>
   <arg name="robot_name" default="thorvald"/>
   <arg name="robot_no" default="001"/>  <!-- unused-->
   <arg name="robot_model" default="$(find bacchus_gazebo)/config/robot.yaml"/>
@@ -36,7 +36,7 @@
 
   <!-- ############################## GAZEBO ############################## -->
   <arg name="world_name" default="vineyard_small_s0_coarse" unless="$(arg riseholme_dt)"/>
-  <arg name="world_name" value="riseholme_digital_twin" if="$(arg riseholme_dt)"/>
+  <arg name="world_name" value="riseholme_dt_data_collection" if="$(arg riseholme_dt)"/>
   <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
   <arg name="world" default="$(find bacchus_gazebo)/worlds/$(arg world_name).world"/>
   <arg name="paused" default="false"/>
