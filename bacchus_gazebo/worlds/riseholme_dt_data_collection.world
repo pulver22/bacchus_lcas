@@ -632,7 +632,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -652,7 +652,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -715,7 +715,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -735,7 +735,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -751,7 +751,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -771,7 +771,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -787,7 +787,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -807,7 +807,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -823,7 +823,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -843,7 +843,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -859,7 +859,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -879,7 +879,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://vine_t0/meshes/vine_t0.dae</uri>
+              <uri>model://vine_t3/meshes/vine_t3.dae</uri>
             </mesh>
           </geometry>
         </visual>
