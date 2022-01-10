@@ -43,7 +43,7 @@
   <arg unless="$(arg localization)" name="args"  default="--delete_db_on_start"/> <!--if in SLAM mode, delete stored map in database, else load previous map-->
   
   <arg name="rgb_topic"   default="/thorvald_001/kinect2_front_camera/rgb/image_raw"/>
-  <arg name="depth_topic" default="/thorvald_001/kinect2_front_sensor/ir/depth/image_raw"/>
+  <arg name="depth_topic" default="/thorvald_001/kinect2_front_sensor/sd/image_depth_rect"/>
   <arg name="camera_info_topic" default="/thorvald_001/kinect2_front_camera/rgb/camera_info"/>
 
   <!-- ############################## GAZEBO ############################## -->
