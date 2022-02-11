@@ -2,7 +2,7 @@
 <launch>
 
   <!-- Robot arguments -->
-  <arg name="fake_localisation" default="true" doc="fake the localisation, sets map_server and world_tf to true."/>
+  <arg name="fake_localisation" default="false" doc="fake the localisation, sets map_server and world_tf to true."/>
   <arg name="robot_name" default="thorvald_001"/>
   <!-- robot supported:
     - thorvald_001

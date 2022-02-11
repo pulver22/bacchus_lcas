@@ -24,8 +24,8 @@
   <arg name="launch_move_base" default="true"/>
   <arg name="launch_rviz" default="true"/>
   <arg name="rviz_config_file" default=""/>
-  <arg name="remap_gazebo_odom_tf" default="false" />
-  <arg name="enable_odom_tf" default="true" />
+  <arg name="remap_gazebo_odom_tf" default="true" />
+  <arg name="enable_odom_tf" default="false" />
 
   <!-- Launch gazebo simulation -->
   <include file="$(find bacchus_gazebo)/launch/empty_world.launch">

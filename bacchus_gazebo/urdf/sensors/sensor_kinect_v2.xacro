@@ -61,13 +61,13 @@
         <camera>
           <horizontal_fov>${70.0*3.14/180.0}</horizontal_fov>
           <image>
-            <width>2208</width>
-            <height>1242</height>
-            <format>L8</format>
+            <width>1920</width>
+            <height>1080</height>
+            <!-- <format>L8</format> -->
           </image>
           <clip>
             <near>0.1</near>
-            <far>8.0</far>
+            <far>100</far>
           </clip>
           <noise>
             <!-- Noise is sampled independently per pixel on each frame.
@@ -75,7 +75,7 @@
           channels, which at that point lie in the range [0,1]. -->
             <type>gaussian</type>
             <mean>0.0</mean>
-            <stddev>0.001</stddev>
+            <stddev>0.100</stddev>
           </noise>
         </camera>
         <plugin name="$(arg robot_name)_${kinect2_name}_sensor_controller" filename="libgazebo_ros_openni_kinect.so">
@@ -108,13 +108,13 @@
         <camera name="${kinect2_name}_camera">
           <horizontal_fov>${70.0*3.14/180.0}</horizontal_fov>
           <image>
-            <width>2208</width>
-            <height>1242</height>
-            <format>R8G8B8</format>
+            <width>1920</width>
+            <height>1080</height>
+            <format>RGB_INT8</format>
           </image>
           <clip>
-            <near>0.02</near>
-            <far>10.0</far>
+            <near>0.01</near>
+            <far>100</far>
           </clip>
           <noise>
             <!-- Noise is sampled independently per pixel on each frame.
