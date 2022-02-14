@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+
+<!--
+Copyright (c) 2020, STEREOLABS.
+
+All rights reserved.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<robot name="camera_3d_zed_zed2_sensor" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!--File includes-->
+    <xacro:include filename="$(find rasberry_core)/urdf/components/sensors/camera_3d_zed_zed2/zed_zed2.gazebo.xacro"/>
+
+    <!-- Properties -->
+    <xacro:property name="M_PI"     value="3.1415926535897931" />
+    <xacro:property name="baseline" value="0.12" />
+
+    <!-- Camera Center -->
+    <joint name="${tf_prefix}${params['suffix']}_zed2_camera_center_joint" type="fixed">
+        <parent link="${tf_prefix}${params['parent_link']}"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_camera_center"/>
+        <origin xyz="${params['x']} ${params['y']} ${params['z']}" rpy="${params['roll']} ${params['pitch']} ${params['yaw']}" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_camera_center">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://rasberry_core/urdf/components/sensors/camera_3d_zed_zed2/meshes/zed2.stl" />
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- Left Camera -->
+    <joint name="${tf_prefix}${params['suffix']}_zed2_left_camera_joint" type="fixed">
+        <parent link="${tf_prefix}${params['suffix']}_zed2_camera_center"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_left_camera_frame"/>
+        <origin xyz="0 ${baseline/2} 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_left_camera_frame" />
+
+    <joint name="${tf_prefix}${params['suffix']}_zed2_left_camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-${M_PI/2} 0.0 -${M_PI/2}"/>
+        <parent link="${tf_prefix}${params['suffix']}_zed2_left_camera_frame"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_left_camera_optical_frame"/>
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_left_camera_optical_frame"/>
+
+    <!-- Right Camera -->
+    <joint name="${tf_prefix}${params['suffix']}_zed2_right_camera_joint" type="fixed">
+        <parent link="${tf_prefix}${params['suffix']}_zed2_camera_center"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_right_camera_frame"/>
+        <origin xyz="0 -${baseline/2} 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_right_camera_frame" />
+
+    <joint name="${tf_prefix}${params['suffix']}_zed2_right_camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-${M_PI/2} 0.0 -${M_PI/2}"/>
+        <parent link="${tf_prefix}${params['suffix']}_zed2_right_camera_frame"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_right_camera_optical_frame"/>
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_right_camera_optical_frame"/>
+
+    <!-- ZED2 Sensors -->
+    <joint name="${tf_prefix}${params['suffix']}_zed2_mag_joint" type="fixed">
+        <parent link="${tf_prefix}${params['suffix']}_zed2_camera_center"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_mag_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_mag_link" />
+
+    <joint name="${tf_prefix}${params['suffix']}_zed2_baro_joint" type="fixed">
+        <parent link="${tf_prefix}${params['suffix']}_zed2_camera_center"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_baro_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_baro_link" />
+
+    <joint name="${tf_prefix}${params['suffix']}_zed2_temp_left_joint" type="fixed">
+        <parent link="${tf_prefix}${params['suffix']}_zed2_left_camera_frame"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_temp_left_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_temp_left_link" />
+
+    <joint name="${tf_prefix}${params['suffix']}_zed2_temp_right_joint" type="fixed">
+        <parent link="${tf_prefix}${params['suffix']}_zed2_right_camera_frame"/>
+        <child link="${tf_prefix}${params['suffix']}_zed2_temp_right_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="${tf_prefix}${params['suffix']}_zed2_temp_right_link" />
+
+    <!-- Camera Gazebo Plugin -->
+    <xacro:camera_3d_zed_zed2_gazebo 
+        robot_name="${robot_name}" 
+        tf_prefix="${tf_prefix}"
+        output_sim="${params['output_sim']}"
+        topic_prefix="${params['topic_prefix']}" 
+        suffix="${params['suffix']}">
+    </xacro:camera_3d_zed_zed2_gazebo>
+
+</robot>
