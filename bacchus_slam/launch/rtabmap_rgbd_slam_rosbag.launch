@@ -2,7 +2,7 @@
 <launch>
 
   <!-- RTAB-MAP SLAM PARAMETERS -->
-  <arg name="Odom/Strategy"           default="0" /> <!--0=Frame-to-Map (F2M) 1=Frame-to-Frame (F2F) 2=Fovis 3=viso2 4=DVO-SLAM 5=ORB_SLAM2 6=OKVIS 7=LOAM 8=MSCKF_VIO 9=VINS-Fusion -->
+  <arg name="Odom/Strategy"           default="1" /> <!--0=Frame-to-Map (F2M) 1=Frame-to-Frame (F2F) 2=Fovis 3=viso2 4=DVO-SLAM 5=ORB_SLAM2 6=OKVIS 7=LOAM 8=MSCKF_VIO 9=VINS-Fusion -->
   <arg name="Kp/DetectorStrategy"     default="8"/>    <!-- 2=ORB  7=BRISK 8=GFTT/ORB 9=KAZE 10=ORB-OCTREE 11=SuperPoint 15=PyDetector" -->
   <arg name="Optimizer/Strategy"      default="1" />  <!-- "Graph optimization strategy: 0=TORO, 1=g2o, 3=Ceres.")-->
   <arg name="remap_gazebo_odom_tf"    default="true"/>
@@ -26,7 +26,7 @@
    
   <arg name="rgb_topic"               default="/thorvald_001/kinect2_front_camera/rgb/image_raw" />
   <arg name="depth_registered_topic"  default="/thorvald_001/kinect2_front_sensor/sd/image_depth_rect" />
-  <arg name="camera_info_topic"       default="/thorvald_001/kinect2_front_camera/rgb/camera_info" />
+  <arg name="camera_info_topic"       default="/thorvald_001/kinect2_front_sensor/sd/camera_info" />
   <arg name="compressed"              default="false"/>
    
   <arg name="subscribe_scan"          default="false"/>         <!-- Assuming 2D scan if set, rtabmap will do 3DoF mapping instead of 6DoF -->
@@ -42,7 +42,7 @@
   <arg name="namespace"               default="rtabmap"/>
   <arg name="wait_for_transform"      default="0.2"/>
   <arg name="RGBD/OptimizeMaxError"   default="1" /> <!--Reject loop closures if optimization error ratio is greater than this value (0=disabled). Ratio is computed as absolute error over standard deviation of each link. This will help to detect when a wrong loop closure is added to the graph.-->
-  <arg name="Reg/Force3DoF"           default="true"/> <!-- Force 3 degrees-of-freedom transform (3Dof: x,y and yaw). Parameters z, roll and pitch will be set to 0.-->
+  <arg name="Reg/Force3DoF"           default="false"/> <!-- Force 3 degrees-of-freedom transform (3Dof: x,y and yaw). Parameters z, roll and pitch will be set to 0.-->
 
   <arg name="rgbd_sync"               default="true"/> <!-- Synchronize topics at different rates -->
   <arg name="two_cameras"             default="false"/>
