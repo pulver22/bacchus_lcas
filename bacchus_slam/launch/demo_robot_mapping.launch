@@ -5,17 +5,17 @@
   <!-- WARNING : Database is automatically deleted on each startup -->
   <!--           See "delete_db_on_start" option below... -->
 
+  <param name="use_sim_time" type="bool" value="True"/>
+  
   <!-- Choose visualization -->
   <arg name="rviz" default="false" />
   <arg name="rtabmapviz" default="true" /> 
   <arg name="rgb_topic" default="/cropped_rgb"/>
   <arg name="depth_topic" default="/cropped_depth"/>
   <arg name="camera_info_topic" default="/cropped_camera_info"/>
-  <arg name="odom_topic" default="/odometry/gps"/>
+  <arg name="odom_topic" default="/odometry/base_raw"/>
   <arg name="scan_topic" default="/scan"/>
-  <arg name="cloud_topic" default="/os_cloud_node/points_filtered"/>
-  
-  <param name="use_sim_time" type="bool" value="True"/>
+  <arg name="cloud_topic" default="/os_cloud_node/points"/>
   
   <!-- Localization-only mode -->
   <arg name="localization"      default="false"/>
@@ -64,7 +64,7 @@
       <param name="RGBD/OptimizeMaxError"     type="string" value="4"/>	    <!-- Reject any loop closure causing large errors (>3x link's covariance) in the map -->
       <param name="Reg/Force3DoF"             type="string" value="true"/>  <!-- 2D SLAM -->
       <param name="Grid/FromDepth"            type="string" value="false"/> <!-- Create 2D occupancy grid from laser scan -->
-      <param name="Grid/RangeMin"             type="string" value="1.0"/>  <!--filter everything inside X meters from the robot -->
+      <param name="Grid/RangeMin"             type="string" value="1.0"/>   <!-- filter everything inside X meters from the robot-->
       <param name="Mem/STMSize"               type="string" value="30"/>    <!-- increased to 30 to avoid adding too many loop closures on just seen locations -->
       <param name="RGBD/LocalRadius"          type="string" value="5"/>     <!-- limit length of proximity detections -->
       <param name="Icp/CorrespondenceRatio"   type="string" value="0.2"/>   <!-- minimum scan overlap to accept loop closure -->
