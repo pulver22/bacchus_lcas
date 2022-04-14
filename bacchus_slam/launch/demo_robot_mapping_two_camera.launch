@@ -153,22 +153,21 @@
             <param unless="$(eval arg('subscribe_scan') or arg('subscribe_scan_cloud'))" name="Grid/Sensor" type="string" value="true"/>
             <!-- ?> -->
             <!-- <param name="Grid/Sensor"                       type="string" value="false" /> -->
-            <!-- <param name="Grid/RangeMin"                     type="string" value="0.5"/> -->
-            <!-- <param name="Grid/RangeMax"                     type="string" value="2.0"/> -->
+            <param name="Grid/RangeMin"                     type="string" value="1.5"/>
+            <param name="Grid/RangeMax"                     type="string" value="10.0"/>
             <param name="Mem/STMSize"                       type="string" value="30" /> <!-- increased to 30 to avoid adding too many loop closures on just seen locations -->
             <param name="RGBD/LocalRadius"                  type="string" value="5"/> <!-- limit length of proximity detections -->
             <!-- ICP parameters -->
             <param name="Icp/Strategy"                      type="string" value="true"/>
             <param name="Icp/DownsamplingStep"              type="string" value="1"/> <!-- cannot be increased with ring-like lidar -->
+            <param name="Icp/PointToPlane"                  type="string" value="true"/>
             <param name="Icp/PointToPlaneK"                 type="string" value="20"/>
             <param name="Icp/PointToPlaneRadius"            type="string" value="0"/>
-            <param name="Icp/PointToPlane"                  type="string" value="true"/>
             <param name="Icp/Iterations"                    type="string" value="10"/>
             <param name="Icp/Epsilon"                       type="string" value="0.001"/>
             <param name="Icp/MaxTranslation"                type="string" value="3"/>
             <param name="Icp/MaxCorrespondenceDistance"     type="string" value="1"/>
-            <param name="Icp/PM"                            type="string" value="true"/> 
-            <param name="Icp/PMOutlierRatio"                type="string" value="0.7"/>
+            <param name="Icp/OutlierRatio"                  type="string" value="0.7"/>
             <param name="Icp/CorrespondenceRatio"           type="string" value="0.2"/> <!-- minimum scan overlap to accept loop closure -->
             <param     if="$(arg floam)" name="Icp/VoxelSize" type="string" value="0"/>
             <param unless="$(arg floam)" name="Icp/VoxelSize" type="string" value="$(arg resolution)"/>
@@ -212,6 +211,7 @@
     <!-- Visualisation RVIZ -->
     <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz"
         args="-d $(find rtabmap_ros)/launch/config/demo_robot_mapping.rviz" output="screen" />
+    
     <node pkg="nodelet" type="nodelet" name="points_xyzrgb" args="standalone rtabmap_ros/point_cloud_xyzrgb">
         <remap from="rgb/image"         to="$(arg rgb_topic)" />
         <remap from="depth/image"       to="$(arg depth_topic)" />
